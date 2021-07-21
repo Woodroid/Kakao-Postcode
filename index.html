@@ -32,8 +32,8 @@
         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
     }
     
-    function postMessageToAndroid(postData) {
-        window.Android.getAddress(postData)
+    function postMessageToAndroid(roadAddress, jibunAddress, zoneCode) {
+        window.Android.getAddress(roadAddress, jibunAddress, zoneCode)
     }
 
     var element_layer = document.getElementById('layer');
@@ -53,7 +53,8 @@
               jibunAddress : jibunAddress,
               zonecode : data.zonecode
           };
-          window.postMessageToAndroid(postData);
+          
+          window.postMessageToAndroid(data.roadAddress, jibunAddress, data.zonecode);
 //           if (window.webkit
 //                && window.webkit.messageHandlers 
 //                && window.webkit.messageHandlers) {
