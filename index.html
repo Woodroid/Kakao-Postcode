@@ -28,32 +28,21 @@
       console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
     }
 
-//     function postMessageToiOS(postData) {
-//         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-//     }
-    
-//     function postMessageToAndroid(roadAddress, jibunAddress, zoneCode) {
-//         window.Android.getAddress(roadAddress, jibunAddress, zoneCode)
-//     }
-
     var element_layer = document.getElementById('layer');
     function execDaumPostcode() {
       new daum.Postcode({
         oncomplete: function(data) {
-          var jibunAddress = ""
-
-          if (data.jibunAddress == "") {
-            jibunAddress = data.autoJibunAddress
-          } else if (data.autoJibunAddress == "") {
-            jibunAddress = data.jibunAddress
-          }
+          // (신)우편변호
+          var zonecode = data.zonecode
+          // 도로명 주소
+          var roadAddress = data.roadAddress
 
           var postData = {
-              roadAddress : data.roadAddress,
-              jibunAddress : jibunAddress,
-              zonecode : data.zonecode
+              roadAddress : roadAddress,
+              zonecode : zonecode
           };
 
+          // Android iOS 구분
           if (window.webkit
                && window.webkit.messageHandlers 
                && window.webkit.messageHandlers) {
@@ -61,7 +50,7 @@
               window.webkit.messageHandlers.callBackHandler.postMessage(postData);
           } else if (window.Android) {
               // Android
-              window.Android.getAddress(data.roadAddress, jibunAddress, data.zoneCode);
+              window.Android.getAddress(roadAddress, zonecode);
           }
         },
         width : '100%',
