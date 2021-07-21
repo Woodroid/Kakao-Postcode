@@ -28,9 +28,9 @@
       console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
     }
 
-    function postMessageToiOS(postData) {
-        window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-    }
+//     function postMessageToiOS(postData) {
+//         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
+//     }
     
     function postMessageToAndroid(postData) {
         window.Android.getAddress(postData)
@@ -54,7 +54,13 @@
               zonecode : data.zonecode
           };
           window.postMessageToAndroid(postData);
-          
+//           if (window.webkit
+//                && window.webkit.messageHandlers 
+//                && window.webkit.messageHandlers) {
+//               window.postMessageToiOS(postData);
+//           } else if (window.Android) {
+//               window.postMessageToAndroid(postData);    
+//           }
         },
         width : '100%',
         height : '100%'
