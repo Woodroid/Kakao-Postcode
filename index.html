@@ -28,9 +28,9 @@
       console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
     }
 
-//     function postMessageToiOS(postData) {
-//         window.webkit.messageHandlers.callBackHandler.postMessage(postData);
-//     }
+    function postMessageToiOS(postData) {
+        window.webkit.messageHandlers.callBackHandler.postMessage(postData);
+    }
     
     function postMessageToAndroid(postData) {
         window.Android.getAddress(postData)
