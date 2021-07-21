@@ -61,7 +61,7 @@
               window.webkit.messageHandlers.callBackHandler.postMessage(postData);
           } else if (window.Android) {
               // Android
-              window.Android.getAddress(roadAddress, jibunAddress, zoneCode);
+              window.Android.getAddress(data.roadAddress, jibunAddress, data.zoneCode);
           }
         },
         width : '100%',
