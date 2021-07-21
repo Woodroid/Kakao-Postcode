@@ -53,8 +53,14 @@
               jibunAddress : jibunAddress,
               zonecode : data.zonecode
           };
-          window.postMessageToiOS(postData);
-          window.postMessageToAndroid(postData);
+          
+          if (window.webkit
+               && window.webkit.messageHandlers 
+               && window.webkit.messageHandlers) {
+              window.postMessageToiOS(postData);
+          } else if (window.Android) {
+              window.postMessageToAndroid(postData);    
+          }
         },
         width : '100%',
         height : '100%'
